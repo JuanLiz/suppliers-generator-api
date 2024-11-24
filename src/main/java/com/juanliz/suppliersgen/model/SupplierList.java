@@ -24,5 +24,6 @@ public class SupplierList {
     @NotBlank
     private String name;
     @NotNull
+    @Column(name = "creation_date", updatable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
 }

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -27,11 +29,12 @@ public class ListItem {
     private int productId;
     @NotNull
     private int quantity;
+    @Lob
     private String comment;
     @NotNull
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "supplier_list_id", insertable = false, updatable = false)
     private SupplierList supplierList;
 

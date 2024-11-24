@@ -4,7 +4,7 @@ CREATE TABLE list_item
     supplier_list_id INT                                  NOT NULL,
     product_id       INT                                  NOT NULL,
     quantity         INT                                  NOT NULL,
-    comment          VARCHAR(255),
+    comment          CLOB,
     updated_at       TIMESTAMP                            NOT NULL,
     CONSTRAINT pk_listitem PRIMARY KEY (id)
 );
@@ -50,7 +50,7 @@ ALTER TABLE list_item
     ADD CONSTRAINT FK_LISTITEM_ON_PRODUCT FOREIGN KEY (product_id) REFERENCES product (id);
 
 ALTER TABLE list_item
-    ADD CONSTRAINT FK_LISTITEM_ON_SUPPLIER_LIST FOREIGN KEY (supplier_list_id) REFERENCES supplier_list (id);
+    ADD CONSTRAINT FK_LISTITEM_ON_SUPPLIER_LIST FOREIGN KEY (supplier_list_id) REFERENCES supplier_list (id) ON DELETE CASCADE;
 
 ALTER TABLE product
     ADD CONSTRAINT FK_PRODUCT_ON_MEASURE_UNIT FOREIGN KEY (measure_unit_id) REFERENCES measure_unit (id);
