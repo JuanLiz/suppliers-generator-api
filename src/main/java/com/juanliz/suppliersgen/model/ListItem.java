@@ -34,7 +34,7 @@ public class ListItem {
     @NotNull
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "supplier_list_id", insertable = false, updatable = false)
     private SupplierList supplierList;
 
